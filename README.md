@@ -22,7 +22,7 @@ TO DO:
   * Change initial PLs
     - Marconi? Want to use consistent set of PL/PLZs
     - Could also consider Neeley update for Spitzer
-  * Different priors on stellar distribution - see Astradma
+  * Different priors on stellar distribution - see Astraatmadja & Bailer-Jones papers
 
 DONE:
   
