@@ -1,0 +1,2 @@
+# the pathnames specify paths to GNU Scientific Library include files and libraries
+gcc -Wall -lm -lgsl -shared -o likelihood_function_quad.so -fPIC -O2 -march=native -L/usr/local/lib -I/usr/local/include likelihood_function_quad.c
