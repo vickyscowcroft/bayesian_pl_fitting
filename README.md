@@ -38,8 +38,6 @@ or in ipython with
 
 ``` python
 
-run -i ./fit_PLRs.py
-
-```
+run -i ./fit_PLRs.py ```
 
 
