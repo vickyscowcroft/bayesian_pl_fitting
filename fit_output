@@ -1,0 +1,20 @@
+Most probable values:
+beta_I1 = -2.01549
+alpha_I1 = -2.96278
+gamma_I1 = 0.99629
+sigma_I1 = 0.48256
+f_par = 7.34286
+par_offset = 0.00136
+sigma_par_sys = 0.00003
+scale_len = 1786.45421
+------------------
+
+Median, 16th and 84th percentile (1-sigma):
+beta_I1 = -2.07376  -1.29791 + 1.41453
+alpha_I1 = -1.46440  -2.47217 + 2.39676
+gamma_I1 = 0.51792  -0.34153 + 0.33596
+sigma_I1 = 0.00426  -0.00298 + 0.05723
+f_par = 3.44249  -2.45568 + 2.68623
+par_offset = -0.00002  -0.00138 + 0.00137
+sigma_par_sys = 0.00004  -0.00003 + 0.00052
+scale_len = 581.53359  -470.78578 + 2010.05037

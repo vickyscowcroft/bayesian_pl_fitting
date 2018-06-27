@@ -1,6 +1,6 @@
 #!/usr/bin/env python
 import numpy as np
-import healpy as hp
+#import healpy as hp
 from esutil.coords import eq2gal, eq2ec
 from astropy.io.fits import getdata
 from numpy.lib.recfunctions import append_fields
@@ -397,8 +397,11 @@ def run_emcee(dat, bands_to_process=[11], rel_tolerance=1e-09, debug=True):
     # run the chains
     scenario = dat['scenario']
     pos, prob, state = emcee_helpers.run_mcmc_with_pbar(sampler, starting_guesses, nsteps)
-
+    
     pool.terminate()
+    
+    #emcee_helpers.emcee_plots(lnp_fn, sampler, theta0=theta0, figout=None, plt=None,
+                #marginalized=True, triangle=True, chains=True)
 
     # check acceptance fraction and measure autocorrelation time
     if debug:

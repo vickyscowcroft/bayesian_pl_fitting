@@ -66,6 +66,9 @@ def getval(l, b, map='sfd', size=None, order=1):
         size = maxsize[map]
     if size is not None:
         fname = fname + '_%d' % size
+    fname = 'maps/' + fname    
+    ### TODO
+    ### dust_dir was wrong
     fname = os.path.join(os.environ['DUST_DIR'], fname)
     if not os.access(fname+'_ngp.fits', os.F_OK):
         raise Exception('Map file %s not found' % (fname+'_ngp.fits'))
