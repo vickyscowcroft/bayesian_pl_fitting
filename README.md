@@ -37,7 +37,7 @@ or in ipython with
 `` ipython --pylab ``
 
 ``` python
-
-run -i ./fit_PLRs.py ```
+run -i ./fit_PLRs.py 
+```
 
 
