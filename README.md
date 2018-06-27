@@ -6,22 +6,21 @@ Original Sesar et al. paper: https://ui.adsabs.harvard.edu/#abs/2017ApJ...838..1
 
 
 
-## Requires GNU scientific library:
+### Requires GNU scientific library:
 
 https://www.gnu.org/software/gsl/
 
-On ubuntu may already be installed in '/usr/include/gsl'
+On ubuntu may already be installed in /usr/include/gsl
 
 
+### Compiling likelihood_function_quad:
 
-
-## To compile likelihood_function_quad:
-
-* See command in README file and change paths accordingly:
+See command in README file and change paths accordingly:
 
 * For ubuntu, try:
 
 `` -L/usr/local/lib and -I/usr/include/ ``
 
-* If the above don't work we can put in a ticket with BUCS.
+* If these don't work we can put in a ticket with BUCS.
+
 
