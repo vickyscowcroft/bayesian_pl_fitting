@@ -12,6 +12,7 @@ https://www.gnu.org/software/gsl/
 
 * On ubuntu may already be installed in '/usr/include/gsl'
 
+
 ## To compile likelihood_function_quad:
 
 * See command in README file and change paths accordingly:
