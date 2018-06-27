@@ -19,7 +19,7 @@ See command in README file and change paths accordingly:
 
 * For ubuntu, try:
 
-`` -L/usr/local/lib and -I/usr/include/ ``
+`` -L/usr/local/lib`` and `` -I/usr/include/ ``
 
 * If these don't work we can put in a ticket with BUCS.
 
