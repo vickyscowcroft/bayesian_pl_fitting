@@ -24,3 +24,21 @@ See command in README file and change paths accordingly:
 * If these don't work we can put in a ticket with BUCS.
 
 
+## Running:
+
+* This version currently only running in Python 2.7
+
+* Can be run from command line as
+
+`` ./fit_PLRs.py ``
+
+or in ipython with 
+
+`` ipython --pylab ``
+`` python
+
+run -i ./fit_PLRs.py
+
+``
+
+
