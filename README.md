@@ -5,3 +5,20 @@ Adaptation of the Bayesian fitting code from Sesar et al. (2017)
 Original Sesar et al. paper: https://ui.adsabs.harvard.edu/#abs/2017ApJ...838..107S/abstract
 
 
+
+## Requires GNU scientific library:
+
+https://www.gnu.org/software/gsl/
+
+* On ubuntu may already be installed in '/usr/include/gsl'
+
+## To compile likelihood_function_quad:
+
+* See command in README file and change paths accordingly:
+
+* For ubuntu, try:
+
+-L/usr/local/lib and -I/usr/include/
+
+* If the above don't work we can put in a ticket with BUCS.
+
