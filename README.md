@@ -35,10 +35,11 @@ See command in README file and change paths accordingly:
 or in ipython with 
 
 `` ipython --pylab ``
-`` python
+
+``` python
 
 run -i ./fit_PLRs.py
 
-``
+```
 
 
