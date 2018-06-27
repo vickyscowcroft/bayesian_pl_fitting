@@ -10,7 +10,9 @@ Original Sesar et al. paper: https://ui.adsabs.harvard.edu/#abs/2017ApJ...838..1
 
 https://www.gnu.org/software/gsl/
 
-* On ubuntu may already be installed in '/usr/include/gsl'
+On ubuntu may already be installed in '/usr/include/gsl'
+
+
 
 
 ## To compile likelihood_function_quad:
@@ -19,7 +21,7 @@ https://www.gnu.org/software/gsl/
 
 * For ubuntu, try:
 
--L/usr/local/lib and -I/usr/include/
+`` -L/usr/local/lib and -I/usr/include/ ``
 
 * If the above don't work we can put in a ticket with BUCS.
 
