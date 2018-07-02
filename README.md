@@ -24,8 +24,7 @@ SFD Dust maps are in maps/ subdirectory
 Add the following to .bash_profile (or corresponding python env init file:)
 
 ```
-export DUST_DIR="
-/PATH/TO/bayesian_pl_fitting"
+export DUST_DIR="/PATH/TO/bayesian_pl_fitting"
 ```
 
 Don't need to add the /maps/ part at the end.
