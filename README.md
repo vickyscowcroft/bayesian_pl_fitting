@@ -17,12 +17,18 @@ On ubuntu may already be installed in /usr/include/gsl
 
 See command in README file and change paths accordingly:
 
-* For ubuntu, try:
+## Dust maps:
 
-`` -L/usr/local/lib`` and `` -I/usr/include/ ``
+SFD Dust maps are in maps/ subdirectory
 
-* If these don't work we can put in a ticket with BUCS.
+Add the following to .bash_profile (or corresponding python env init file:)
 
+```
+export DUST_DIR="
+/PATH/TO/bayesian_pl_fitting"
+```
+
+Don't need to add the /maps/ part at the end.
 
 ## Running:
 
