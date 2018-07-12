@@ -1,0 +1,20 @@
+### Query to retrieve GAIA cepheids within a range of them not being too shite
+
+SELECT t.source_id, t.parallax, t.parallax_error, t.parallax_over_error, t.ra, t.ra_error, t.dec, t.dec_error, t.phot_g_mean_mag, t.phot_g_mean_flux_error,
+       i.source_id, i.pf, i.pf_error, i.metallicity, i.metallicity_error, i.type_best_classification, i.type2_best_sub_classification, 
+       i.peak_to_peak_g, i.peak_to_peak_g_error
+
+FROM gaiadr2.gaia_source AS t
+  
+INNER JOIN gaiadr2.vari_cepheid AS i 
+
+ON t.source_id = i.source_id
+
+WHERE ABS(t.parallax_over_error) > 1
+  AND t.phot_g_mean_mag < 16
+  AND i.pf IS NOT NULL
+  AND t.parallax IS NOT NULL
+  AND i.metallicity IS NOT NULL
+  AND i.type_best_classification = 'DCEP'
+
+ORDER BY parallax DESC
