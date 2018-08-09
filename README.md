@@ -1,5 +1,4 @@
 # BATDOG
-------
 
 ### *The <font color=red>B</font>ayesian <font color=red>A</font>s<font color=red>t</font>rometric <font color=red>D</font>ust Cart<font color=red>og</font>rapher*
 
@@ -9,7 +8,6 @@ A Python notebook for processing of parallaxes, comparison with variable star di
 
 
 ## Getting started
-------
 
 ### Pre-requisites
 
@@ -42,7 +40,6 @@ Run batdog.ipynb. Data to use should be in the data_dir (`data/` by default.) Si
 
 
 ## Loading data
-------
 
 ### Fake data schemes
 
@@ -84,12 +81,11 @@ Data is written into a pandas.DataFrame aptly named `data`. Annoyingly, I used s
 * `ID`: the ID of a star. Maybe just an integer, or could be its name in your survey.
 * `ra`: right ascension, in degrees.
 * `dec`: declination, in degrees.
-* `r`: the distance to a star from the observer, in parsecs. (Not to be confused with a shorthand for the *ranges* dictionary in the priors/likelihoods section.)
+* `r`: the distance to a star from the observer, in parsecs. (Not to be confused with a shorthand for the `ranges` dictionary in the priors/likelihoods section.)
 * `x, y, z`: cartesian co-ordinates, in parsecs.
 
 
 ## Setup of priors
-------
 
 ### Parallax priors
 
@@ -119,11 +115,10 @@ A number of parameters have uniform priors in reasonable ranges. The scatter par
 
 All priors and likelihoods have a `debug` mode specified by a boolean that will highlight any array indices with non-finite values (such as `-inf`, which corresponds to 0 probability in log-probability space.) This can be very helpful in working out what's wrong.
 
-When given even a single infinitely unlikely starting guess, emcee will get 'very stuck' and not move walkers at all, even when it looks like it should for 99.9% of the walkers. Debug mode is your friend in this case!
+When given even a single infinitely unlikely starting guess, emcee will get '[http://weknowmemes.com/wp-content/uploads/2012/05/i-got-stuck-so-i-went-to-sleep.jpg](very stuck)' and not move walkers at all, even when it looks like it should for 99.9% of the walkers. Debug mode is your friend in this case!
 
 
 ## Creation of a starting guess
-------
 
 A key part of the code is the starting guess maker. A 100-star, 10 band simulation will have over 2100 parameters (!!!), and as such, the Monte-Carlo method is extremely slow at moving through parameter space. To complete your work before your own death, it's hence necessary to start at the right answer, and only conduct sampling to get an idea of the errors/any bi-/tri-/etc-modality in the distributions.
 
@@ -168,47 +163,60 @@ Walker guesses are only added if they return a finite evaluation of `posterior()
 Setting these standard deviations really high will make it take fucking forever because there will be so many rejects. Setting `debug` to `True` in the call of `posterior()` will let you see which parameters are constantly causing zero probabilities.
 
 
-## Running with `emcee`
-------
+## Running with `emcee` and data output
 
-(TO-DO)
+Interfacing with emcee is controlled by a number of functions that simplify the process. 
 
+#### `run_emcee_for_me`
 
-## Data output
-------
+This function controls the calling of `emcee`, helps to prevent out of memory errors, predicts finish times, and allows you to specify a cut-off time to end running after (in `end_time` hours.)
 
-(TO-DO)
+Out of memory errors are avoided with empirical numbers corresponding to model parameters (dimenions, walkers, and chain length) that corresponded to roughly one quarter memory usage on a machine with 15.5GB of RAM. Using `psutil.virtual_memory().total` and parameters of the input sampler, the function estimates a maximum chain length that your system can run before encountering memory issues. 
+
+Generally, about one quarter memory usage remains stable and fast, giving Python enough room to copy arrays around. Upto a half could be used, but the program begins to slow to a crawl by this point. This can be changed with the `memory_fraction_to_use` parameter.
+
+If more steps have been requested than can be stored at once, the function auto-refreshes the chain. It will attempt to return the longest possible chain - for instance, if you requested 500 steps but the max stable chain length was 300, then the program would refresh after 200 steps and return 300 steps at the very end.
+
+Every time `sampler.run_mcmc()` is called, `emcee` has to copy to a new array longer than before (due to inefficiencies in .append() methods vs. array pre-allocation.) This can only be done on a single CPU core, and slows the program down for long chains. As such, the program runs silently for `reporting_time` minutes, calling `emcee` for multiple steps at a time and increasing program speed.
+
+#### Parameter and chain plotting functions
+
+Two plotting functions are built-in: `plot_chains` and `plot_corner`. Both should be fully automated in plotting, and will make a plot of global parameters and parameters for a single specified star in a single specified band. Also, `plot_chains`'s lnprob plot at the top is great for looking at how convergence is going.
+
+#### Quantile computation and value comparison functions
+
+Additionally, a function to call `corner.quantile()` in section 6 can be used to calculate the modal value of distributions of all parameters and their +- range to 1 sigma either side. This is then used a bit lower to make plots of parameters between measured and true values.
 
 
 ## Tips for successful running
-------
 
-(TO-DO)
+A number of things are in the documentation above, but here are some extras:
+
+### Include zero-point calibration stars in your model if you're inferring for a systematic parallax offset
+
+Due to the degeneracy between all parameters - parallax, extinction, period, etc - BATDOG will often get cheeky and use the zero-point offset parameter to shift things around because it doesn't know any better. Having at least ~5 calibration stars would solve this.
+
+For further guidance on why inferring for parallax offsets is necessary with Gaia data in small sections of the sky, see Bailer-Jones 2018 (IV) or Gaia Collaboration 2018 (Using Gaia parallaxes).
 
 
 ## Author details
-------
 
 BATDOG was originally written by Emily Hunt (eh594@bath.ac.uk, or emily.hunt.physics@gmail.com after she graduates, or @emilydoesastro on Twitter) under the supervision of Dr Victoria Scowcroft.
 
 
 ## Versioning
-------
 
-was (maybe foolishly) not used during development- please see GitHub commit notes as they're mostly quite informative.
+... was (maybe foolishly) not used during development - please see GitHub commit notes as they're mostly quite informative.
 
 
 ## License
-------
 
 (To-do?)
 
 
 ## Acknowledgements
-------
 
-(TO-DO with code used, e.g. reference Sesar)
-
+This code was heavily based on work by Branimir Sesar (see 2017 paper), made use of the excellent resources provided on the use of Gaia parallaxes with first author Coryn Bailer-Jones, used a helpful 2010 data analysis guide by David Hogg, and was helped in its development by a Bayesian statistics tutorial by [https://github.com/jakevdp/BayesianAstronomy](Jake VanderPlas).
 
 
 
