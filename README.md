@@ -14,7 +14,7 @@ A Python notebook for processing of parallaxes, comparison with variable star di
 * Python 3 (development was conducted on 3.6)
 * Jupyter to open the main notebook file.
 
-And the following packages - with brackets around the versions that were used in development. Lower (or higher) versions may cause unintended behaviour. **Italicised** packages are non-essential, but recommended.
+And the following packages - with brackets around the versions that were used in development. Lower (or higher) versions may cause unintended behaviour. *Italicised* packages are non-essential, but recommended.
 
 * numpy (1.14.5)
 * scipy (1.1)
@@ -22,10 +22,10 @@ And the following packages - with brackets around the versions that were used in
 * matplotlib (2.2.2)
 * emcee (2.2.1)
 * psutil (5.4.6)
-* **corner** (2.0.1)
-* **astropy** (3.0.3)
+* *corner* (2.0.1)
+* *astropy* (3.0.3)
 
-**Don't have admin privileges on your machine? It sucks, doesn't it! You can install packages to your user directory and solve this problem with the --user flag when installing packages with pip.**
+*Don't have admin privileges on your machine? It sucks, doesn't it! You can install packages to your user directory and solve this problem with the --user flag when installing packages with pip.*
 
 ### Optional extras
 
@@ -115,7 +115,7 @@ A number of parameters have uniform priors in reasonable ranges. The scatter par
 
 All priors and likelihoods have a `debug` mode specified by a boolean that will highlight any array indices with non-finite values (such as `-inf`, which corresponds to 0 probability in log-probability space.) This can be very helpful in working out what's wrong.
 
-When given even a single infinitely unlikely starting guess, emcee will get '[http://weknowmemes.com/wp-content/uploads/2012/05/i-got-stuck-so-i-went-to-sleep.jpg](very stuck)' and not move walkers at all, even when it looks like it should for 99.9% of the walkers. Debug mode is your friend in this case!
+When given even a single infinitely unlikely starting guess, emcee will get '[very stuck](http://weknowmemes.com/wp-content/uploads/2012/05/i-got-stuck-so-i-went-to-sleep.jpg)' and not move walkers at all, even when it looks like it should for 99.9% of the walkers. Debug mode is your friend in this case!
 
 
 ## Creation of a starting guess
@@ -216,7 +216,7 @@ BATDOG was originally written by Emily Hunt (eh594@bath.ac.uk, or emily.hunt.phy
 
 ## Acknowledgements
 
-This code was heavily based on work by Branimir Sesar (see 2017 paper), made use of the excellent resources provided on the use of Gaia parallaxes with first author Coryn Bailer-Jones, used a helpful 2010 data analysis guide by David Hogg, and was helped in its development by a Bayesian statistics tutorial by [https://github.com/jakevdp/BayesianAstronomy](Jake VanderPlas).
+This code was heavily based on work by Branimir Sesar (see 2017 paper), made use of the excellent resources provided on the use of Gaia parallaxes with first author Coryn Bailer-Jones, used a helpful 2010 data analysis guide by David Hogg, and was helped in its development by a Bayesian statistics tutorial by [Jake Vanderplas](https://github.com/jakevdp/BayesianAstronomy).
 
 
 
