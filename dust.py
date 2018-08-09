@@ -82,4 +82,5 @@ def getval(l, b, map='sfd', size=None, order=1):
             w = wcs.WCS(hdulist[0].header)
             x, y = w.wcs_world2pix(l[m], b[m], 0)
             out[m] = map_coordinates(hdulist[0].data, [y, x], order=order, mode='nearest')
+    print fname
     return out

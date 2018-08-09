@@ -20,7 +20,7 @@ def emcee_best(sampler):
     return np.array([ np.median(sampler.flatchain[:, k]) for k in range(sampler.flatchain.shape[1]) ])
 
 
-def emcee_plots(lnp_fn, sampler, theta0=None, figout=None, plt=None,
+def emcee_plots(lnp_fn, sampler, theta0=None, figout=True, plt=None,
                 marginalized=True, triangle=True, chains=True):
     """ Plots diagnostic figures """
     if plt is None:
@@ -356,7 +356,7 @@ try:
     import pylab as plt
 
     def triangle_figure(sdata, lbls=None, add_lnp=False, ticksrotation=45,
-                        gaussian_ellipse=True, figout=None, lnp_cut=None, **kwargs):
+                        gaussian_ellipse=True, figout=True, lnp_cut=None, **kwargs):
         print('Creating figure: Correlation plot (aka triangle plot)')
         if lbls is None:
             lbls = 'all'
