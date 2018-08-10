@@ -211,7 +211,7 @@ BATDOG was originally written by Emily Hunt (eh594@bath.ac.uk, or emily.hunt.phy
 
 ## License
 
-(To-do?)
+MIT License Emily Hunt (2018) - see LICENSE file
 
 
 ## Acknowledgements
