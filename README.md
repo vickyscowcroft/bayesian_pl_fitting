@@ -192,11 +192,21 @@ Additionally, a function to call `corner.quantile()` in section 6 can be used to
 
 A number of things are in the documentation above, but here are some extras:
 
-### Include zero-point calibration stars in your model if you're inferring for a systematic parallax offset
 
-Due to the degeneracy between all parameters - parallax, extinction, period, etc - BATDOG will often get cheeky and use the zero-point offset parameter to shift things around because it doesn't know any better. Having at least ~5 calibration stars would solve this.
+### Make sure the mean acceptance fraction is between 0.2 and 0.5
 
-For further guidance on why inferring for parallax offsets is necessary with Gaia data in small sections of the sky, see Bailer-Jones 2018 (IV) or Gaia Collaboration 2018 (Using Gaia parallaxes).
+BATDOG reports the mean acceptance fraction when running, and it ideally should be in the range 0.2 to 0.5. If it is significantly lower then this, that can mean two things:
+1. There aren't enough walkers.
+2. The model is too complicated (with too many parameters) - their degeneracies will cause `emcee` to get very stuck.
+
+More guidance can be found in [this paper](https://ui.adsabs.harvard.edu/#abs/2013PASP..125..306F/abstract) made by the creators of `emcee`.
+
+
+### You may need to include zero-point calibration stars in your model if you're inferring for a systematic parallax offset
+
+Due to the degeneracy between all parameters - parallax, extinction, etc - BATDOG may get cheeky and use the zero-point offset parameter to shift things around because it doesn't know any better. Having at least ~5 calibration stars would solve this. This is likely to be more of an issue for runs with a small number of stars or with few photometric bands.
+
+For further guidance on why inferring for parallax offsets is necessary with Gaia data in small sections of the sky (e.g. the Magellanic clouds), see Bailer-Jones 2018 (IV) or Gaia Collaboration 2018 (Using Gaia parallaxes).
 
 
 ## Author details
