@@ -126,7 +126,7 @@ PLR for band K:
   s =  0.252 +0.037 -0.024
 
   
-# Metallicity off. Rv off. N_stars = 182. JHK only.
+# Metallicity off. Rv off. N_stars = 70. JHK only.
 Global parameters:
   omega_0 = (-0.11257 +0.01643 -0.01674)mas
         L = (665.262 +74.550 -59.122)pc
