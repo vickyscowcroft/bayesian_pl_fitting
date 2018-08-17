@@ -217,6 +217,12 @@ BATDOG reports the mean acceptance fraction when running, and it ideally should 
 
 More guidance can be found in [this paper](https://ui.adsabs.harvard.edu/#abs/2013PASP..125..306F/abstract) made by the creators of `emcee`.
 
+### It is imperative for convergence within your own lifetime that the MAP value of the posterior is the starting guess
+
+Due to the size of the model, it takes a long time for `emcee` to make large moves through parameter space. In fact, it's easy for it to get more or less indefinitely stuck in valleys that are far away from the actual correct MAP value.
+
+Make sure that the starting guess maker is as good as possible. BATDOG has a lot of work to do already to explore parameter space and give you results, and it will struggle greatly if it has to move thousands of walkers with hundreds of parameters each a large distance through parameter space first before it's even at the right answer.
+
 ### You may need to include zero-point calibration stars in your model if you're inferring for a systematic parallax offset
 
 Due to the degeneracy between all parameters - parallax, extinction, etc - BATDOG may get cheeky and use the zero-point offset parameter to shift things around because it doesn't know any better. Having at least ~5 calibration stars helps to solve this. This is likely to be more of an issue for runs with a small number of stars, with few photometric bands, or when the distance prior is strong and pushes the zero-point offset away from its true value.
